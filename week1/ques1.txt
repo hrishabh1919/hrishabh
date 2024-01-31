@@ -1,0 +1,59 @@
+#include <iostream>
+
+using namespace std;
+
+int linearsearch(int[],int,int);
+
+int main()
+{
+    int size,testno,key,arr[100],i,position=0;
+
+    cout<<"enter no of test case"<<endl;
+    cin>>testno;
+
+    for(int i=0;i<testno;i++)
+    {
+        cout<<"enter the no of elements in array"<<endl;
+        cin>>size;
+
+        cout<<"enter the elements in array"<<endl;
+        for(int i=0;i<size;i++)
+        {
+            cin>>arr[i];
+        }
+
+        cout<<"enter the key to search"<<endl;
+        cin>>key;
+
+        position=linearsearch(arr,key,size);
+
+        if(position==0)
+        {
+            cout<<"not present"<<endl;
+        }
+        else
+        {
+            cout<<"present"<<position<<endl;
+        }
+
+        
+    }
+    return 0;
+}
+
+
+int linearsearch(int a[], int k,int n)
+{
+    int i,posi;
+
+    for(i=0;i<n;i++)
+    {
+        if(a[i]==k)
+        {
+            return i+1;
+        }
+        
+    }
+    return 0;
+
+}
