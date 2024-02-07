@@ -1,1 +1,37 @@
 
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int countPairs(int arr[], int n, int key) {
+    sort(arr, arr + n);
+    int count = 0;
+
+    for (int i = 0; i < n; ++i) {
+        int diff = arr[i] + key;
+        int upper = upper_bound(arr + i + 1, arr + n, diff) - arr;
+        int lower = lower_bound(arr + i + 1, arr + n, diff) - arr;
+        count += (upper - lower);
+    }
+
+    return count;
+}
+
+int main() {
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int n, key;
+        cin >> n;
+        int arr[n];
+
+        for (int i = 0; i < n; ++i)
+            cin >> arr[i];
+
+        cin >> key;
+        cout << countPairs(arr, n, key) << endl;
+    }
+
+    return 0;
+}
