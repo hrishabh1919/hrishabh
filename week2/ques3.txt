@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <algorithm>
 using namespace std;
@@ -7,7 +6,7 @@ int countPairs(int arr[], int n, int key) {
     int count = 0;
 
     for (int i = 0; i < n; ++i) {
-        int diff = arr[i] + key;
+        int diff = arr[i] - key;
         int upper = upper_bound(arr + i + 1, arr + n, diff) - arr;
         int lower = lower_bound(arr + i + 1, arr + n, diff) - arr;
         count += (upper - lower);
@@ -17,27 +16,23 @@ int countPairs(int arr[], int n, int key) {
 }
 
 int main() {
-    int T;
-    cout << "Enter the number of test cases: ";
-    cin >> T;
+    int Tno;
+    cout << "Enter the no of test case ";
+    cin >> Tno;
 
-    while (T--) {
+    while (Tno--) {
         int n, key;
-        cout << "Enter the size of the array: ";
+        cout << "Enter the size of the array ";
         cin >> n;
-        if (n <= 0) {
-            cout << "Invalid array size. Please enter a positive integer." << endl;
-            continue;
-        }
         int arr[n];
 
-        cout << "Enter the elements of the array (sorted): ";
+        cout << "Enter the sorted elements of array ";
         for (int i = 0; i < n; ++i)
             cin >> arr[i];
 
         cout << "Enter the key: ";
         cin >> key;
-        cout << "Number of pairs with sum equal to " << key << ": " << countPairs(arr, n, key) << endl;
+        cout << "No of pairs with difference equal to " << key << ": " << countPairs(arr, n, key) << endl;
     }
 
     return 0;
