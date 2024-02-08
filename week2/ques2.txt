@@ -1,1 +1,44 @@
+#include <iostream>
+using namespace std;
+
+
+bool findTriplets(int arr[], int n) {
+    for (int k = n - 1; k >= 2; --k) {
+        int i = 0, j = k - 1;
+        while (i < j) {
+            int sum = arr[i] + arr[j];
+            if (sum == arr[k]) {
+                cout << "Indices: " << i << ", " << j << ", " << k << endl;
+                return true;
+            } else if (sum < arr[k]) {
+                ++i;
+            } else {
+                --j;
+            }
+        }
+    }
+    return false;
+}
+
+int main() {
+    int T;
+    cout << "Enter the number of test cases: ";
+    cin >> T;
+
+    while (T--) {
+        int n;
+        cout << "Enter the size of the array: ";
+        cin >> n;
+        
+        int arr[n];
+        cout << "Enter the elements of the array: ";
+        for (int i = 0; i < n; ++i)
+            cin >> arr[i];
+
+        if (!findTriplets(arr, n))
+            cout << "No such triplets found." << endl;
+    }
+
+    return 0;
+}
 
