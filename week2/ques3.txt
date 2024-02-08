@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <cstdlib> // For abs() function
 using namespace std;
 
 int countPairs(int arr[], int n, int key) {
@@ -7,8 +8,8 @@ int countPairs(int arr[], int n, int key) {
 
     for (int i = 0; i < n; ++i) {
         int diff = arr[i] - key;
-        int upper = upper_bound(arr + i + 1, arr + n, diff) - arr;
-        int lower = lower_bound(arr + i + 1, arr + n, diff) - arr;
+        int upper = upper_bound(arr + i + 1, arr + n, abs(diff)) - arr;
+        int lower = lower_bound(arr + i + 1, arr + n, abs(diff)) - arr;
         count += (upper - lower);
     }
 
