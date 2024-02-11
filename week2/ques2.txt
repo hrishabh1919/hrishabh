@@ -2,17 +2,25 @@
 using namespace std;
 
 
-bool findTriplets(int arr[], int n) {
-    for (int k = n - 1; k >= 2; --k) {
+bool pattern(int arr[], int n)
+{
+    for (int k = n - 1; k >= 2; --k)
+    {
         int i = 0, j = k - 1;
-        while (i < j) {
+        while (i < j)
+        {
             int sum = arr[i] + arr[j];
-            if (sum == arr[k]) {
-                cout << "Indices: " << i << ", " << j << ", " << k << endl;
+            if (sum == arr[k])
+            {
+                cout << "POsition " << i+1 << ", " << j+1 << ", " << k+1 << endl;
                 return true;
-            } else if (sum < arr[k]) {
+            }
+            else if (sum < arr[k])
+            {
                 ++i;
-            } else {
+            }
+            else
+            {
                 --j;
             }
         }
@@ -20,25 +28,26 @@ bool findTriplets(int arr[], int n) {
     return false;
 }
 
-int main() {
+int main()
+{
     int T;
-    cout << "Enter the number of test cases: ";
+    cout << "Enter no.of test cases ";
     cin >> T;
 
-    while (T--) {
+    while (T--)
+    {
         int n;
-        cout << "Enter the size of the array: ";
+        cout << "Enter size ";
         cin >> n;
         
         int arr[n];
-        cout << "Enter the elements of the array: ";
+        cout << "Enter elements of array: ";
         for (int i = 0; i < n; ++i)
             cin >> arr[i];
 
-        if (!findTriplets(arr, n))
-            cout << "No such triplets found." << endl;
+        if (!pattern(arr, n))
+            cout << "No pattern found " << endl;
     }
 
     return 0;
 }
-
