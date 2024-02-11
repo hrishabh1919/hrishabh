@@ -23,17 +23,17 @@ int main() {
 
     while (Tno--) {
         int n, key;
-        cout << "Enter size of the array ";
+        cout << "Enter size ";
         cin >> n;
         int arr[n];
 
-        cout << "Enter elements of array ";
+        cout << "Enter elements ";
         for (int i = 0; i < n; ++i)
             cin >> arr[i];
 
         cout << "Enter key: ";
         cin >> key;
-        cout << "No of pairs with difference equal to " << key << ": " << countPairs(arr, n, key) << endl;
+        cout << "No.of pairs with difference " << key << " is/are " << countPairs(arr, n, key) << endl;
     }
 
     return 0;
