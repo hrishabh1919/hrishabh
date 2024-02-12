@@ -1,63 +1,73 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
-int lesrch(int arr[], int key, int low, int high) {
-    for (int i = low; i <= high; i++) {
-        if (arr[i] == key) {
-            return i+1;
+int linearSearch(int arr[], int key, int low, int high)
+{
+    for (int i = low; i <= high; i++)
+    {
+        if (arr[i] == key)
+        {
+            return i + 1; 
         }
     }
     return 0;
 }
 
-int jump(int arr[], int key, int n) {
+int jumpSearch(int arr[], int key, int n) 
+{
     int low = 0, high = 1;
 
-    while (arr[high] < key && high < n) {
+    while (high < n && arr[high] < key)
+    {
         low = high;
-        high = high * 2;
+        high = pow(2, high + 1);
     }
-    
-    if (high < n - 1)
+
+    if (high >= n)
     {
-        return lesrch(arr, key, low, high);
+        high = n - 1;
     }
-    else
-    {
-        return lesrch(arr, key, low, n - 1);
-    }
+
+    return linearSearch(arr, key, low, high);
 }
 
-int main() {
+int main()
+{
     int tno;
 
-    cout << "Enter the number of test cases: ";
+    cout << "Enter no.of test cases ";
     cin >> tno;
 
-    while (tno--) {
+    while (tno--)
+    {
         int n;
 
-        cout << "Enter size: ";
+        cout << "Enter size ";
         cin >> n;
 
         int arr[n];
 
-        cout << "Enter sorted elements:" << endl;
-        for (int i = 0; i < n; ++i) {
+        cout << "Enter sorted elements " << endl;
+        for (int i = 0; i < n; ++i)
+        {
             cin >> arr[i];
         }
 
         int key;
 
-        cout << "Enter key: ";
+        cout << "Enter key ";
         cin >> key;
 
-        int result = jump(arr, key, n);
+        int result = jumpSearch(arr, key, n);
 
-        if (result != 0) {
+        if (result != 0)
+        {
             cout << "Key " << key << " found at position " << result << endl;
-        } else {
+        }
+        else
+        {
             cout << "Key " << key << " not found" << endl;
         }
     }
